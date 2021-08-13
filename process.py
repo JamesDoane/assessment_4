@@ -19,4 +19,20 @@ def sales_reports(log_file):
             print(line)
 
 #calls the function declared in line 6 (method i think its called in python)
-sales_reports(log_file)
+# sales_reports(log_file)
+
+def melon_numbers(log_file):
+    total = 0
+    for line in log_file:
+        line = line.rstrip()
+        # print(line)
+        num = line[16:18]
+        num = int(num)
+        if num > 10:
+            print(num)
+            total += num
+    print(total)
+
+#come on why you no put close statement???
+melon_numbers(log_file)
+log_file.close()

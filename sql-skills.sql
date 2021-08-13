@@ -40,3 +40,41 @@ from customer c
 select al.title as album_title, ar.name as artist_name from album al
     join artist ar on ar.artist_id=al.artist_id
         order by ar.name;
+
+-- EXTRA CREDIT
+--SQL
+--Artist Table
+select * from artist order by name desc limit 10;
+
+select * from artist where name like 'Black%';
+
+select * from artist where name like '%Black%';
+
+--Employee Table
+select max(birth_date) from employee;
+
+select min(birth_date) from employee;
+
+--Invoice Table
+select count(invoice) from invoice where billing_state in ('TX' , 'CA' , 'AZ');
+
+select avg(total) from invoice;
+
+--Join Queries
+select track_id from playlist_track pt 
+    join playlist p on p.playlist_id = pt.playlist_id
+        where p.name = 'Music';
+
+select t.name from track t
+    join playlist_track pt on t.track_id = pt.track_id
+        where pt.playlist_id = 5;
+
+select t.name as TrackName, p.name as PlaylistName from track t
+    join playlist_track pt on t.track_id = pt.track_id 
+        join playlist p on p.playlist_id = pt.playlist_id
+            order by t.name;
+
+select t.name as trackname, al.title as albumtitle from album al
+    join track t on t.album_id = al.album_id
+        join genre g on t.genre_id = g.genre_id
+            where g.name in ('Alternative', 'Punk');
